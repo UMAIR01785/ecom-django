@@ -12,7 +12,7 @@ def cart_counter(request):
             cart_item=Cartitem.objects.filter(cart=cart)
             for cart_items in cart_item:
                 count+=cart_items.quantity
-        except cart.DoesNotExist:
+        except Carts.DoesNotExist:
             count =0
 
     return{'cart_count': count}

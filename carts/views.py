@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from store.models import Product
+from store.models import Product,Variation
 from .models import Cartitem,Carts
 
 def _cart_id(request):
@@ -29,10 +29,18 @@ def cart_remove(request,product_id):
 
 
 def add_cart(request,product_id):
-    if request =="POST":
-        color=request.POST['color']
-        
     product=Product.objects.get(id=product_id)
+    product_variation=[]
+    if request.method =="POST":
+        for item in request.POST:
+            key=item
+            value=request.POST[key]
+            try:
+                variation=Variation.objects.get(variation_item__iexact=key, variation_value__iexact=value)
+                product_variation.append(variation)
+            except:
+                pass
+    
     try:
         cart=Carts.objects.get(cart_id=_cart_id(request))
     except Carts.DoesNotExist:

@@ -36,7 +36,7 @@ def add_cart(request,product_id):
             key=item
             value=request.POST[key]
             try:
-                variation=Variation.objects.get(variation_item__iexact=key, variation_value__iexact=value)
+                variation=Variation.objects.get(product=product,variation_item__iexact=key, variation_value__iexact=value)
                 product_variation.append(variation)
             except:
                 pass
@@ -49,8 +49,13 @@ def add_cart(request,product_id):
         )
     cart.save()
     try:
-        cart_item=Cartitem.objects.get(product=product,cart=cart)
-        cart_item.quantity +=1
+        cart_item=Cartitem.objects.create(product=product,quantity=1,cart=cart)
+        if len(product_variation)> 0:
+            cart_item.variations.clear()
+            for item in product_variation:
+                cart_item.variations.add(item)
+
+        # cart_item.quantity +=1
         cart_item.save()
     except Cartitem.DoesNotExist:
         cart_item=Cartitem.objects.create(
@@ -60,6 +65,10 @@ def add_cart(request,product_id):
              is_active=True,
 
         )
+        if len(product_variation)> 0:
+            cart_item.variations.clear()
+            for item in product_variation:
+                cart_item.variations.add(item)
         cart_item.save()
 
        

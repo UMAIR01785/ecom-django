@@ -46,7 +46,7 @@
 					<div class="col"> 
 						<div class="input-group input-spinner">
 							<div class="input-group-prepend">
-							<a href="{% url 'cart_dec' cart_item.product.id %}" class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-minus"></i> </a>
+							<a href="{% url 'cart_dec' cart_item.product.id cart_item.id %}" class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-minus"></i> </a>
 							</div>	
 							<input type="text" class="form-control"  value="{{cart_item.quantity}}">
 							<div class="input-group-append">
@@ -63,7 +63,7 @@
 	</td>
 	
 	<td class="text-right"> 
-	<a href="{% url 'cart_remove' cart_item.product.id %}" class="btn btn-danger"> Remove</a>
+	<a href="{% url 'cart_remove' cart_item.product.id cart_item.id %}" class="btn btn-danger"> Remove</a>
 	</td>
 </tr>
 {% endfor %}

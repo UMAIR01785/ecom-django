@@ -1,10 +1,14 @@
 from django.urls import path
-from . import views
+from . views import register,login,logout,dashboard,activate,forgotpassword,resetpassword_validate,resetpassword
 urlpatterns = [
  
-    path('register/', views.register , name='register'),
-    path('login/', views.login , name='login'),
-    path('logout/', views.logout , name='logout'),
-    path('activate/<uidb64>/<token>/',views.activate,name='activate'),
+    path('register/', register , name='register'),
+    path('login/', login , name='login'),
+    path('logout/', logout , name='logout'),
+    path('dashboard/', dashboard , name='dashboard'),
+    path('activate/<uidb64>/<token>/',activate,name='activate'),
+    path('forgotpassword/',forgotpassword ,name='forgotpassword'),
+    path('resetpassword/',resetpassword ,name='resetpassword'),
+    path('resetpassword_validate/<uidb64>/<token>/',resetpassword_validate,name='resetpassword_validate'),
     
 ]

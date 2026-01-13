@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from . models import Account
 
-class AccountAdmin(admin.ModelAdmin):
+class AccountAdmin(UserAdmin):
     list_display=('username','email','is_active','is_superuser')
     filter_horizontal=()
     list_filter=()

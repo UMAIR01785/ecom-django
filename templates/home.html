@@ -7,59 +7,18 @@
 <!-- Hero Section -->
 <div class="container my-5">
     <div class="hero-section">
+        <img src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Hero Background" class="hero-bg-img">
+        <div class="hero-overlay"></div>
         <div class="hero-content text-center">
             <h1 class="hero-title">Welcome to ShopHub</h1>
             <p class="hero-subtitle">Discover Premium Quality Products at Unbeatable Prices</p>
-            <button class="hero-btn">
-                <i class="fas fa-shopping-cart me-2"></i>Shop Now
-            </button>
+            
         </div>
     </div>
 </div>
 
 <!-- Features Section -->
-<div class="features-section">
-    <div class="container py-5">
-        <div class="row g-4">
-            <div class="col-md-3 col-sm-6">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <h4 class="feature-title">Free Shipping</h4>
-                    <p class="feature-text">On orders over $50</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="feature-title">Secure Payment</h4>
-                    <p class="feature-text">100% secure transactions</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-undo"></i>
-                    </div>
-                    <h4 class="feature-title">Easy Returns</h4>
-                    <p class="feature-text">30-day return policy</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h4 class="feature-title">24/7 Support</h4>
-                    <p class="feature-text">Dedicated customer service</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Categories Section -->
 <div class="container my-5">
@@ -69,44 +28,20 @@
     </div>
     
     <div class="row g-4">
+        {% for categorys in category %}
         <div class="col-md-4">
             <div class="category-card text-center">
-                <div class="category-icon">
-                    <i class="fas fa-laptop"></i>
-                </div>
-                <h3 class="category-title">Electronics</h3>
+                <a href="#" class="category-img-wrapper"> 
+                    <img src="{{ categorys.category_photo.url }}" alt="{{ categorys.category_name }}" class="category-img">
+                </a>
+                <h3 class="category-title">{{categorys.category_name}}</h3>
                 <p class="category-description">Latest gadgets, smartphones, laptops and tech accessories</p>
                 <button class="category-btn">
                     Explore Now <i class="fas fa-arrow-right ms-2"></i>
                 </button>
             </div>
         </div>
-        
-        <div class="col-md-4">
-            <div class="category-card text-center">
-                <div class="category-icon">
-                    <i class="fas fa-tshirt"></i>
-                </div>
-                <h3 class="category-title">Fashion</h3>
-                <p class="category-description">Trendy clothing, shoes, and fashion accessories for everyone</p>
-                <button class="category-btn">
-                    Explore Now <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="category-card text-center">
-                <div class="category-icon">
-                    <i class="fas fa-couch"></i>
-                </div>
-                <h3 class="category-title">Home & Living</h3>
-                <p class="category-description">Beautiful furniture, decor and home improvement items</p>
-                <button class="category-btn">
-                    Explore Now <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 

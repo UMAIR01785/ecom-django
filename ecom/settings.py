@@ -126,3 +126,19 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
+
+
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='mumair8627@gmail.com'
+EMAIL_HOST_PASSWORD='fnxh mtzf nufc befa'  # Replace with your new App Password (no spaces)
+EMAIL_USE_TLS=True
+
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+  
+}

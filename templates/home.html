@@ -31,14 +31,14 @@
         {% for categorys in category %}
         <div class="col-md-4">
             <div class="category-card text-center">
-                <a href="#" class="category-img-wrapper"> 
+                <a href="{% url 'product_by_category' categorys.category_slug %}" class="category-img-wrapper"> 
                     <img src="{{ categorys.category_photo.url }}" alt="{{ categorys.category_name }}" class="category-img">
                 </a>
                 <h3 class="category-title">{{categorys.category_name}}</h3>
                 <p class="category-description">Latest gadgets, smartphones, laptops and tech accessories</p>
-                <button class="category-btn">
+                <a href="{% url 'product_by_category' categorys.category_slug %}" class="category-btn text-decoration-none">
                     Explore Now <i class="fas fa-arrow-right ms-2"></i>
-                </button>
+                </a>
             </div>
         </div>
         {% endfor %}
@@ -53,77 +53,26 @@
     </div>
     
     <div class="row g-4">
+        {% for items in item %}
+        {% if items.is_feature == True %}
         <div class="col-lg-3 col-md-6">
             <div class="product-card">
                 <div class="product-image">
-                    <span class="product-badge">-25%</span>
-                    <i class="fas fa-headphones"></i>
+                    <img src="{{items.image.url }}" alt="Product image">
                 </div>
                 <div class="product-body">
-                    <h4 class="product-title">Wireless Headphones</h4>
+                    <h4 class="product-title">{{items.item_name}}</h4>
                     <div class="product-price">
-                        $149.99 <span class="old-price">$199.99</span>
+                        {{items.price}}$
                     </div>
-                    <button class="product-btn">
-                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                    </button>
+                    <a href="{% url 'item_detail' items.category_name.category_slug items.item_slug %}" class="product-btn text-decoration-none">
+                        <i class="fas fa-shopping-cart me-2"></i>View Details
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <div class="col-lg-3 col-md-6">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="product-badge">New</span>
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="product-body">
-                    <h4 class="product-title">Smart Phone Pro</h4>
-                    <div class="product-price">
-                        $899.99
-                    </div>
-                    <button class="product-btn">
-                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="product-badge">-15%</span>
-                    <i class="fas fa-camera"></i>
-                </div>
-                <div class="product-body">
-                    <h4 class="product-title">Digital Camera 4K</h4>
-                    <div class="product-price">
-                        $599.99 <span class="old-price">$699.99</span>
-                    </div>
-                    <button class="product-btn">
-                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="product-badge">Hot</span>
-                    <i class="fas fa-watch"></i>
-                </div>
-                <div class="product-body">
-                    <h4 class="product-title">Smart Watch Ultra</h4>
-                    <div class="product-price">
-                        $299.99
-                    </div>
-                    <button class="product-btn">
-                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 

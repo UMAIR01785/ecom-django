@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Buy {{current_category.category_name}} at the best rate{% endblock %}
+
+{% block content %}
+
+<!-- Category Header -->
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="section-title">{{current_category.category_name}}</h2>
+        <p class="section-subtitle">Browse all products in this category</p>
+    </div>
+
+    <!-- Products Count -->
+    <div class="products-header">
+        <p class="products-count">
+            <strong>{{item_count}}</strong> products found
+        </p>
+        <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+        {% for product in item %}
+        
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="{{product.image.url }}" alt="Jean ">
+                {% if product.is_feature %}
+                    <span class="badge-featured">Featured</span>
+                {% else %}
+                    <span class="badge-featured">New</span>
+                {% endif %}
+            </div>
+            <div class="product-body">
+                <span class="product-category">{{current_category.category_name}}</span>
+                <h4 class="product-title">{{product.item_name}}</h4>
+                <p class="product-description">{{product.description}}</p>
+                <div class="product-price">${{product.price}}</div>
+                <small class="product-stock">Stock: {{product.stock}}</small>
+                <a href="{% url 'item_detail' product.category_name.category_slug product.item_slug %}" class="product-btn text-decoration-none">
+                    <i class="fas fa-shopping-cart"></i> Views Details
+                </a>
+            </div> 
+        </div>
+        {% endfor %}
+
+
+      
+
+        
+    </div>
+</div>
+
+{% endblock %}

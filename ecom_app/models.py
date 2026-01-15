@@ -23,10 +23,13 @@ class Category_item(models.Model):
     price=models.CharField( max_length=50)
     image=models.ImageField(upload_to="media/Item")
     description=models.TextField()
+    is_available=models.BooleanField(default=True,blank=True,null=True)
+    stock=models.IntegerField(null=True,blank=True)
     item_slug=models.SlugField()
     created_at=models.DateTimeField( auto_now_add=True)
     updated_at=models.DateTimeField( auto_now=True)
     is_feature=models.BooleanField(default=False)
+    
 
 
     def __str__(self):

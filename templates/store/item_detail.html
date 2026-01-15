@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.item_name }} - ShopHub{% endblock %}
+
+
+{% block content %}
+
+<div class="container my-5">
+	<div class="product-detail-wrapper">
+		<!-- Left: Image / Gallery -->
+		<div class="product-detail-gallery">
+			<div class="product-detail-main-image">
+				<img src="{{ item.image.url }}" alt="{{ item.item_name }}" class="img-fluid">
+				{% if item.is_feature %}
+					<span class="badge-featured">Featured</span>
+				{% else %}
+					<span class="badge-featured">New</span>
+				{% endif %}
+				{% if not item.is_available %}
+					<span class="badge-out-of-stock">Out of stock</span>
+				{% endif %}
+			</div>
+		</div>
+
+		<!-- Right: Info -->
+		<div class="product-detail-info">
+			<span class="product-detail-category">{{ item.category_name.category_name }}</span>
+			<h1 class="product-detail-title">{{ item.item_name }}</h1>
+
+			<div class="product-detail-meta">
+				<div class="product-detail-price">${{ item.price }}</div>
+				<div class="product-detail-stock">
+					{% if item.is_available and item.stock %}
+						In stock · {{ item.stock }} available
+					{% elif item.is_available %}
+						In stock
+					{% else %}
+						Currently unavailable
+					{% endif %}
+				</div>
+			</div>
+
+			<p class="product-detail-description">
+				{{ item.description }}
+			</p>
+
+			<div class="product-detail-actions">
+				<a href="{% url 'dashboard' %}" class="product-detail-btn primary text-decoration-none" {% if not item.is_available %}disabled{% endif %}>
+					<i class="fas fa-shopping-cart"></i>
+					Add to Cart
+				</a>
+				
+			</div>
+
+			<div class="product-detail-extra">
+				<div class="detail-pill">
+					<i class="fas fa-truck"></i>
+					Fast & free delivery
+				</div>
+				<div class="detail-pill">
+					<i class="fas fa-undo"></i>
+					7-day easy returns
+				</div>
+				<div class="detail-pill">
+					<i class="fas fa-shield-alt"></i>
+					Secure checkout
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

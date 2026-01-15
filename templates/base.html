@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'store' %}">
                             <i class="fas fa-box me-1"></i>Products
                         </a>
                     </li>
@@ -43,7 +43,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% for categorys in category %}
-                            <li><a class="dropdown-item" href="#">{{categorys.category_name}}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'product_by_category' categorys.category_slug %}">{{categorys.category_name}}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -74,7 +74,7 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link position-relative" href="#">
+                        <a class="nav-link position-relative" href="{% url 'dashboard' %}">
                             <i class="fas fa-shopping-cart me-1"></i>Cart
                             <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
                         </a>

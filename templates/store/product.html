@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}All Products - Best Deals{% endblock %}
+
+{% block content %}
+
+<!-- All Products Section -->
+<div class="container my-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h2 class="section-title">All Products</h2>
+        <p class="section-subtitle">Discover our complete collection of premium products</p>
+    </div>
+
+    <!-- Filter and Sort Section -->
+    <div class="products-header">
+        <p class="products-count">
+            <strong>{{item_count}}</strong> products available
+        </p>
+        <div class="filter-controls">
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+        {% for items in item %}
+        
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="{{items.image.url }}" alt="Red Sneakers">
+                {% if items.is_feature %}
+                <span class="badge-featured">Featured</span>
+                {% else %}
+                <span class="badge-featured">New</span>
+                {% endif %}
+                
+            </div>
+            <div class="product-body">
+                <span class="product-category">{{items.category_name}}</span>
+                <h4 class="product-title">{{items.item_name}}</h4>
+                <p class="product-description">{{items.description}}</p>
+                <div class="product-footer">
+                    <div class="product-price-section">
+                        <div class="product-price">${{items.price}}</div>
+                        <small class="product-stock">
+                            <i class="fas fa-box"></i> Stock: {{items.stock}}
+                        </small>
+                    </div>
+                    {% if items.stock > 0 %}
+                    <a href="{% url 'item_detail' items.category_name.category_slug items.item_slug  %}" class="product-btn text-decoration-none">
+                        <i class="fas fa-shopping-cart"></i> View Details
+                    </a>
+                    
+                    {% else %}
+                    <button class="product-btn"><i class="fas "></i>Unavialable</button>
+                     
+
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="pagination-section text-center">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+{% endblock %}

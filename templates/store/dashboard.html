@@ -1,0 +1,397 @@
+{% extends "base.html" %}
+{% block title %}My Dashboard - Orders & Profile{% endblock %}
+
+{% block content %}
+
+<!-- Customer Dashboard -->
+<div class="customer-dashboard-wrapper">
+    <div class="container py-5">
+        <!-- Dashboard Header -->
+        <div class="customer-dash-header mb-4">
+            <div class="user-welcome">
+                <div class="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=10b981&color=fff" alt="User">
+                </div>
+                <div>
+                    <h2>Welcome back, {{user.username}}</h2>
+                    <p class="text-muted">Manage your orders and account settings</p>
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="fas fa-user-edit"></i> Edit Profile
+                </a>
+            </div>
+        </div>
+
+       
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs customer-tabs mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#orders" type="button">
+                    <i class="fas fa-list"></i> My Orders
+                </button>
+           
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- All Orders Tab -->
+            <div class="tab-pane fade show active" id="orders">
+                <div class="orders-section">
+                    <h4 class="mb-4">Order History</h4>
+                    
+                    <!-- Order Item 1 -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-001</span>
+                            </div>
+                            <span class="order-status-badge status-delivered">Delivered</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Red Nike Sneakers</h5>
+                                    <p>Size: 10 | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Ordered on Jan 10, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$129.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-sm btn-success">
+                                        <i class="fas fa-redo"></i> Buy Again
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Item 2 -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-002</span>
+                            </div>
+                            <span class="order-status-badge status-shipped">Shipped</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Wireless Headphones</h5>
+                                    <p>Color: Black | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Ordered on Jan 12, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$199.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-truck"></i> Track Order
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="fas fa-eye"></i> Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Item 3 -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-003</span>
+                            </div>
+                            <span class="order-status-badge status-delivered">Delivered</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Smart Watch Pro</h5>
+                                    <p>Color: Silver | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Ordered on Jan 8, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$299.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-warning">
+                                        <i class="fas fa-star"></i> Write Review
+                                    </button>
+                                    <button class="btn btn-sm btn-success">
+                                        <i class="fas fa-redo"></i> Buy Again
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Confirmation Tab -->
+            <div class="tab-pane fade" id="pending">
+                <div class="orders-section">
+                    <h4 class="mb-4">Orders Awaiting Confirmation</h4>
+                    
+                    <!-- Pending Order 1 -->
+                    <div class="order-card order-pending-confirm">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-004</span>
+                            </div>
+                            <span class="order-status-badge status-pending">Pending Payment</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Ultra Slim Laptop</h5>
+                                    <p>16GB RAM, 512GB SSD | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Placed on Jan 14, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$899.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-success confirm-order-btn">
+                                        <i class="fas fa-check"></i> Confirm & Pay
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-timer">
+                            <i class="fas fa-clock"></i>
+                            <span>Time remaining to confirm: <strong>23:45:12</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Pending Order 2 -->
+                    <div class="order-card order-pending-confirm">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-005</span>
+                            </div>
+                            <span class="order-status-badge status-pending">Pending Payment</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Designer Handbag</h5>
+                                    <p>Leather, Brown | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Placed on Jan 14, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$179.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-success confirm-order-btn">
+                                        <i class="fas fa-check"></i> Confirm & Pay
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-timer">
+                            <i class="fas fa-clock"></i>
+                            <span>Time remaining to confirm: <strong>22:10:05</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Pending Order 3 -->
+                    <div class="order-card order-pending-confirm">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <i class="fas fa-receipt"></i>
+                                <span>Order #ORD-2024-006</span>
+                            </div>
+                            <span class="order-status-badge status-pending">Pending Payment</span>
+                        </div>
+                        <div class="order-body">
+                            <div class="order-product">
+                                <img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=100" alt="Product">
+                                <div class="order-product-info">
+                                    <h5>Leather Jacket</h5>
+                                    <p>Size: L, Black | Qty: 1</p>
+                                    <p class="order-date">
+                                        <i class="fas fa-calendar"></i> Placed on Jan 13, 2026
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-price">$249.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm btn-success confirm-order-btn">
+                                        <i class="fas fa-check"></i> Confirm & Pay
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-timer">
+                            <i class="fas fa-clock"></i>
+                            <span>Time remaining to confirm: <strong>18:32:47</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="tab-pane fade" id="profile">
+                <div class="profile-section">
+                    <h4 class="mb-4">Account Information</h4>
+                    <div class="profile-card">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" value="John">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" value="Doe">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" value="john.doe@example.com">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" value="+1 234 567 8900">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Bio</label>
+                                    <textarea class="form-control" rows="3">Passionate shopper and tech enthusiast</textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <h4 class="mt-5 mb-4">Change Password</h4>
+                    <div class="profile-card">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-key"></i> Update Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Addresses Tab -->
+            <div class="tab-pane fade" id="addresses">
+                <div class="addresses-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4>Saved Addresses</h4>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add New Address
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <!-- Address 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="address-card">
+                                <div class="address-header">
+                                    <h5>Home</h5>
+                                    <span class="badge bg-success">Default</span>
+                                </div>
+                                <div class="address-body">
+                                    <p><strong>John Doe</strong></p>
+                                    <p>123 Main Street, Apt 4B</p>
+                                    <p>New York, NY 10001</p>
+                                    <p>United States</p>
+                                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                                </div>
+                                <div class="address-actions">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="address-card">
+                                <div class="address-header">
+                                    <h5>Office</h5>
+                                </div>
+                                <div class="address-body">
+                                    <p><strong>John Doe</strong></p>
+                                    <p>456 Business Ave, Suite 200</p>
+                                    <p>New York, NY 10002</p>
+                                    <p>United States</p>
+                                    <p><i class="fas fa-phone"></i> +1 234 567 8901</p>
+                                </div>
+                                <div class="address-actions">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="fas fa-check"></i> Set Default
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

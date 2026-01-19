@@ -45,7 +45,7 @@
 			</p>
 
 			<div class="product-detail-actions">
-				<a href="{% url 'dashboard' %}" class="product-detail-btn primary text-decoration-none" {% if not item.is_available %}disabled{% endif %}>
+				<a href="{% url 'add_cart' item.id %}" class="product-detail-btn primary text-decoration-none" {% if not item.is_available %}disabled{% endif %}>
 					<i class="fas fa-shopping-cart"></i>
 					Add to Cart
 				</a>

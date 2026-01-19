@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <div class="container py-5">
+        <!-- Page Header -->
+        <div class="cart-header mb-4">
+            <h1 class="cart-title">
+                <i class="fas fa-shopping-cart me-3"></i>Shopping Cart
+            </h1>
+            <p class="cart-subtitle">Review your items and proceed to checkout</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Cart Items Section -->
+            <div class="col-lg-8">
+                <div class="cart-items-container">
+                    <!-- Cart Item 1 -->
+                    {% for cartitems in cartitem %}
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="{{cartitems.item.image.url }}" alt="Product">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">{{cartitems.item}}</h3>
+                            <p class="cart-item-category">{{cartitems.item.category_name}}</p>
+                            <div class="cart-item-meta">
+                                <span class="cart-item-price"><small><small>${{cartitems.item.price}}</small></small></span>
+                                <span class="cart-item-price">${{cartitems.sub_total}}</span>
+                                
+                                <span class="cart-item-stock">
+                                    {% if cartitems.item.stock > 0 %}
+                                    <i class="fas fa-check-circle me-1"></i>In Stock
+                                    {% else %}
+                                    out of stock
+                                    {% endif %}
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-controls">
+                                <a href="{% url 'remove_cart' cartitems.item.id %}" class="qty-btn qty-decrease text-decoration-none">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                                <input type="number" class="qty-input" value="{{cartitems.quantity}}" readonly>
+                                <a href="{% url 'add_cart' cartitems.item.id %}" class="qty-btn qty-increase text-decoration-none">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                            <a href="{% url 'remove_cart_item' cartitems.item.id %}" class="cart-item-remove text-decoration-none">
+                                <i class="fas fa-trash-alt me-2"></i>Remove
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                 
+
+                    <!-- Continue Shopping Button -->
+                    <div class="continue-shopping mt-4">
+                        <a href="{% url 'home' %}" class="btn-continue-shopping">
+                            <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary Section -->
+            <div class="col-lg-4">
+                <div class="order-summary-sticky">
+                    <div class="order-summary">
+                        <h2 class="order-summary-title">Order Summary</h2>
+                        
+                        <div class="order-summary-details">
+                            <div class="summary-row">
+                                <span class="summary-label">Subtotal ({{quantity}} items)</span>
+                                <span class="summary-value">${{total}}</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Tax (10%)</span>
+                                <span class="summary-value">${{tax}}</span>
+                            </div>
+                           
+                        </div>
+
+                        <div class="summary-total">
+                            <span class="total-label">Total</span>
+                            <span class="total-value">${{grand_total}}</span>
+                        </div>
+
+
+                        <!-- Checkout Button -->
+                        <button class="btn-checkout">
+                            <span>Proceed to Checkout</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <p class="payment-methods-label">We Accept</p>
+                            <div class="payment-icons">
+                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-mastercard"></i>
+                                <i class="fab fa-cc-amex"></i>
+                                <i class="fab fa-cc-paypal"></i>
+                            </div>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div class="cart-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Free shipping over $50</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Secure checkout</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-undo-alt"></i>
+                                <span>30-day returns</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty Cart State (Hidden by default) -->
+        <div class="empty-cart" style="display: none;">
+            <div class="empty-cart-content">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Your Cart is Empty</h2>
+                <p>Looks like you haven't added anything to your cart yet.</p>
+                <a href="#" class="btn-shop-now">
+                    <i class="fas fa-shopping-bag me-2"></i>Start Shopping
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

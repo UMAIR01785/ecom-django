@@ -6,9 +6,12 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display=('category_name','created_at')
     prepopulated_fields={ "category_slug": ("category_name",)}
     
+    
 class itemAdmin(admin.ModelAdmin):
     list_display=('item_name','category_name','price','created_at')
-    prepopulated_fields={"item_slug": ("item_name",)}
+    readonly_fields=['item_slug']
+    
+    
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Category_item,itemAdmin)

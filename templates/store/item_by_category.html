@@ -20,8 +20,8 @@
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
     </div>
-
-    <!-- Products Grid -->
+    {% if item %}
+     <!-- Products Grid -->
     <div class="products-grid">
         {% for product in item %}
         
@@ -53,6 +53,11 @@
 
         
     </div>
+    
+    {% else %}
+    <p> The {{keyword}} is not found 
+    {% endif %}
+   
 </div>
 
 {% endblock %}
